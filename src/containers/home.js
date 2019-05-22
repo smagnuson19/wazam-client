@@ -5,8 +5,13 @@ import { withRouter } from 'react-router-dom';
 
 const Home = (props) => {
   return (
-    <div>
-      <p> Below Here should be a big button </p>
+    <div className="wrapper">
+      <div className="boundingBox">
+        <div className="innerBox">
+          <p> Wazam it!</p>
+        </div>
+      </div>
+      <p> Select a file to upload </p>
     </div>
   );
 };

@@ -1,7 +1,7 @@
 import React from 'react';
 import { Switch, Route } from 'react-router-dom';
 
-import Welcome from '../containers/welcome';
+
 import Home from '../containers/home';
 
 
@@ -12,8 +12,8 @@ const FallBack = (props) => {
 const Routes = (props) => {
   return (
     <Switch>
-      <Route exact path="/" component={Welcome} />
-      <Route exact path="/home" component={Home} />
+      <Route exact path="/" component={Home} />
+
       <Route component={FallBack} />
     </Switch>
   );

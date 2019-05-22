@@ -5,7 +5,7 @@ $dark-grey: #333333;
 
 body, html {
   font-family: "Roboto", sans-serif;
-  background: $white;
+  background: rgb(112, 201, 183);
   height: 100%;
 }
 
@@ -30,12 +30,11 @@ body, html {
 
 
 .navbar {
-  @extend %flex-row;
+  @extend %flex-column;
   justify-content: space-between;
   min-height: 80px;
-  background-color: $primary;
   font-weight: 200;
-  font-size: 1.2em;
+  font-size: 1.6em;
   padding: 0.5em;
 
   ul {
@@ -64,21 +63,54 @@ body, html {
 
 .navbar-container {
   @extend %flex-row;
-  justify-content: flex-start;
-  width: 50%;
-  padding: 10px;
+  justify-content: center;
   align-items: center;
 }
 
 .navbar-list-container {
   @extend %flex-row;
   justify-content: flex-end;
-  width: 50%;
-  padding: 10px;
+  padding: 12px;
   align-items: center;
 }
 
 .navbar-header {
-  font-size: 30px;
+  font-size: 100px;
   color: $white;
+}
+
+.wrapper {
+  @extend %flex-column;
+  margin-top: 4%;
+  align-content: center;
+  justify-content: center;
+
+  p {
+    text-align: center;
+  }
+}
+
+.boundingBox {
+  display: flex;
+  padding: 20px;
+  margin: auto;
+  background-color: $dark-grey;
+  justify-content: center;
+  align-content: center;
+  border: none;
+
+  .innerBox{
+    background-color: black; /* Green */
+    border: none;
+
+    p {
+      color: $white;
+      font-size: 60px;
+      padding: 0px 60px;
+    }
+
+    &:hover {
+      color: $dark-grey;
+    }
+  }
 }

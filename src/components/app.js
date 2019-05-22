@@ -5,16 +5,19 @@ import {
 import Routes from './routes';
 import '../style.scss';
 
+
 const Nav = (props) => {
   return (
     <nav className="navbar">
-      <div className="navbar-container">
-        <div className="navbar-header">Wazam</div>
-      </div>
+
       <div className="navbar-list-container">
         <ul>
-          <li><NavLink to="/" exact>Home</NavLink></li>
+          <li><NavLink to="/" exact>About</NavLink></li>
         </ul>
+      </div>
+      <div className="navbar-container">
+        <div className="navbar-header">Wazam</div>
+
       </div>
     </nav>
   );
@@ -22,12 +25,14 @@ const Nav = (props) => {
 
 const App = (props) => {
   return (
+
     <Router>
       <div>
         <Nav />
         <Routes />
       </div>
     </Router>
+
   );
 };
 
