@@ -6,6 +6,19 @@ import Routes from './routes';
 import '../style.scss';
 
 
+const ColoredLine = ({ color }) => (
+  <hr
+    style={{
+      color,
+      backgroundColor: color,
+      height: 3,
+      border: 'none',
+      width: '40%',
+      padding: 0,
+    }}
+  />
+);
+
 const Nav = (props) => {
   return (
     <nav className="navbar">
@@ -17,7 +30,7 @@ const Nav = (props) => {
       </div>
       <div className="navbar-container">
         <div className="navbar-header">Wazam</div>
-
+        <ColoredLine color="black" />
       </div>
     </nav>
   );
