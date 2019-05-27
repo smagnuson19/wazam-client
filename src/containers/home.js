@@ -9,14 +9,19 @@ class Home extends Component {
     super(props);
     this.state = {
       audio: false,
+      results: false,
     };
     this.recordingToggle = this.recordingToggle.bind(this);
+    this.redoToggle = this.redoToggle.bind(this);
     this.onStop = this.onStop.bind(this);
   }
 
   onStop(recordedBlob) {
     console.log('recordedBlob is: ', String(recordedBlob.blobURL));
     this.postRecording(recordedBlob);
+    this.setState(prevState => ({
+      results: !prevState.results,
+    }));
   }
 
   postRecording(recording) {
@@ -45,33 +50,73 @@ class Home extends Component {
     }));
   }
 
+  redoToggle() {
+    this.setState(prevState => ({
+      results: !prevState.results,
+    }));
+  }
+
   render() {
-    return (
-      <div className="wrapper">
-        <div className="boundingBox">
-          <div className="innerBox"
-            onClick={this.recordingToggle}
-            role="button"
-            tabIndex={0}
-          >
-            <ReactMic
-              record={this.state.audio}
-              className="sound-wave"
-              onStop={this.onStop}
-              strokeColor="#000000"
-              backgroundColor="#FF4081"
-            />
+    if (this.state.results === false) {
+      return (
+        <div className="wrapper">
+          <div className="boundingBox">
+            <div className="innerBox"
+              onClick={this.recordingToggle}
+              role="button"
+              tabIndex={0}
+            >
+              <ReactMic
+                record={this.state.audio}
+                className="sound-wave"
+                onStop={this.onStop}
+                strokeColor="#000000"
+                backgroundColor="#FF4081"
+              />
 
-            <p>
-              {' '}
-              {this.state.audio ? 'Stop' : 'Wazam It!'}
-            </p>
+              <p>
+                {' '}
+                {this.state.audio ? 'Stop' : 'Wazam It!'}
+              </p>
 
+            </div>
           </div>
         </div>
-        <p> Select a file to upload </p>
-      </div>
-    );
+      );
+    } else {
+      return (
+        <div className="wrapper">
+          <div className="boundingBox">
+            <div className="songBox">
+              <div className="headerBox">
+                <p>
+                  {' '}
+                  {'Your top song match results are:'}
+                </p>
+              </div>
+              <p>
+                {' '}
+                {'1. '}
+                {' '}
+                {'2. '}
+                {' '}
+                {'3. '}
+              </p>
+              <div className="redoBox"
+                onClick={this.redoToggle}
+                role="button"
+                tabIndex={0}
+              >
+                <p>
+                  {' '}
+                  {'Wazam it again!'}
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      );
+    }
   }
 }
 
