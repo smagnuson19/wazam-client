@@ -10,6 +10,7 @@ class Home extends Component {
     this.state = {
       audio: false,
       results: false,
+      hasMatch: true,
     };
     this.recordingToggle = this.recordingToggle.bind(this);
     this.redoToggle = this.redoToggle.bind(this);
@@ -56,6 +57,60 @@ class Home extends Component {
     }));
   }
 
+  displaySongs() {
+    if (this.state.hasMatch === true) {
+      return (
+        <div className="songBox">
+          <div className="headerBox">
+            <p>
+              {' '}
+              {'Your top song match results are:'}
+            </p>
+          </div>
+          <p>
+            {' '}
+            {'1. '}
+            {' '}
+            {'2. '}
+            {' '}
+            {'3. '}
+          </p>
+          <div className="redoBox"
+            onClick={this.redoToggle}
+            role="button"
+            tabIndex={0}
+          >
+            <p>
+              {' '}
+              {'Wazam it again!'}
+            </p>
+          </div>
+        </div>
+      );
+    } else {
+      return (
+        <div className="songBox">
+          <div className="headerBox">
+            <p>
+              {' '}
+              {'No close matches. Please try again.'}
+            </p>
+          </div>
+          <div className="redoBox"
+            onClick={this.redoToggle}
+            role="button"
+            tabIndex={0}
+          >
+            <p>
+              {' '}
+              {'Wazam it again!'}
+            </p>
+          </div>
+        </div>
+      );
+    }
+  }
+
   render() {
     if (this.state.results === false) {
       return (
@@ -87,32 +142,7 @@ class Home extends Component {
       return (
         <div className="wrapper">
           <div className="boundingBox">
-            <div className="songBox">
-              <div className="headerBox">
-                <p>
-                  {' '}
-                  {'Your top song match results are:'}
-                </p>
-              </div>
-              <p>
-                {' '}
-                {'1. '}
-                {' '}
-                {'2. '}
-                {' '}
-                {'3. '}
-              </p>
-              <div className="redoBox"
-                onClick={this.redoToggle}
-                role="button"
-                tabIndex={0}
-              >
-                <p>
-                  {' '}
-                  {'Wazam it again!'}
-                </p>
-              </div>
-            </div>
+            {this.displaySongs()}
           </div>
         </div>
       );
