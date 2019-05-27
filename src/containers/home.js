@@ -104,18 +104,21 @@ class Home extends Component {
           <p>
             {' '}
             {'1. '}
+            <img src={this.state.recordingData.data[0].image} alt="Logo" width="50" height="50" />
             {this.state.recordingData.data[0].title}
             {' by '}
             {this.state.recordingData.data[0].artist}
           </p>
           <p>
             {'2. '}
+            <img src={this.state.recordingData.data[1].image} alt="Logo" width="50" height="50" />
             {this.state.recordingData.data[1].title}
             {' by '}
             {this.state.recordingData.data[1].artist}
           </p>
           <p>
             {'3. '}
+            <img src={this.state.recordingData.data[2].image} alt="Logo" width="50" height="50" />
             {this.state.recordingData.data[2].title}
             {' by '}
             {this.state.recordingData.data[2].artist}
