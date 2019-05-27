@@ -55,6 +55,7 @@ class Home extends Component {
   redoToggle() {
     this.setState(prevState => ({
       results: !prevState.results,
+      recordingData: '',
     }));
   }
 
@@ -98,31 +99,37 @@ class Home extends Component {
           <div className="headerBox">
             <p>
               {' '}
-              {'Your top song match results are:'}
+              {'Top Results'}
             </p>
           </div>
-          <p>
-            {' '}
-            {'1. '}
-            <img src={this.state.recordingData.data[0].image} alt="Logo" width="50" height="50" />
-            {this.state.recordingData.data[0].title}
-            {' by '}
-            {this.state.recordingData.data[0].artist}
-          </p>
-          <p>
-            {'2. '}
-            <img src={this.state.recordingData.data[1].image} alt="Logo" width="50" height="50" />
-            {this.state.recordingData.data[1].title}
-            {' by '}
-            {this.state.recordingData.data[1].artist}
-          </p>
-          <p>
-            {'3. '}
-            <img src={this.state.recordingData.data[2].image} alt="Logo" width="50" height="50" />
-            {this.state.recordingData.data[2].title}
-            {' by '}
-            {this.state.recordingData.data[2].artist}
-          </p>
+          <div className="song">
+            <p>
+              {' '}
+              {'1. '}
+              <img src={this.state.recordingData.data[0].image} alt="Logo" width="50" height="50" />
+              <a href={this.state.recordingData.data[0].spotify}>{this.state.recordingData.data[0].title}</a>
+              {' by '}
+              {this.state.recordingData.data[0].artist}
+            </p>
+          </div>
+          <div className="song">
+            <p>
+              {'2. '}
+              <img src={this.state.recordingData.data[1].image} alt="Logo" width="50" height="50" />
+              <a href={this.state.recordingData.data[1].spotify}>{this.state.recordingData.data[1].title}</a>
+              {' by '}
+              {this.state.recordingData.data[1].artist}
+            </p>
+          </div>
+          <div className="song">
+            <p>
+              {'3. '}
+              <img src={this.state.recordingData.data[2].image} alt="Logo" width="50" height="50" />
+              <a href={this.state.recordingData.data[2].spotify}>{this.state.recordingData.data[2].title}</a>
+              {' by '}
+              {this.state.recordingData.data[2].artist}
+            </p>
+          </div>
           <div className="redoBox"
             onClick={this.redoToggle}
             role="button"

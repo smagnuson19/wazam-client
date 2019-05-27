@@ -9,6 +9,15 @@ body, html {
   height: 100%;
 }
 
+a {
+  text-decoration: none;
+  color: $white;
+
+  &:hover {
+    color: $dark-grey;
+  }
+}
+
 // Extensions
 %flex-row {
   display: flex;
@@ -35,7 +44,7 @@ body, html {
   min-height: 80px;
   font-weight: 200;
   font-size: 1.6em;
-  padding: 0.5em;
+  padding: 0.1em;
 
   ul {
     @extend %flex-row;
@@ -71,7 +80,7 @@ body, html {
 .navbar-list-container {
   @extend %flex-row;
   justify-content: flex-end;
-  padding: 12px;
+  padding: 5px 12px;
   align-items: center;
 }
 
@@ -82,7 +91,7 @@ body, html {
 
 .wrapper {
   @extend %flex-column;
-  margin-top: 4%;
+  margin-top: 2%;
   align-content: center;
   justify-content: center;
 
@@ -142,6 +151,22 @@ body, html {
 
     &:hover {
       color: $dark-grey;
+    }
+  }
+
+  .song {
+    display: flex-row;
+    font-size: 40px;
+    padding-left: 10px;
+    justify-content: center;
+    vertical-align: middle;
+    align-content: flex-start;
+
+    img{
+      padding-right: 10px;
+    }
+    p {
+      text-align: left;
     }
   }
 
