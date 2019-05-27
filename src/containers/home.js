@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
-import { connect } from 'react-redux';
-import { withRouter } from 'react-router-dom';
+
 import { ReactMic } from 'react-mic';
+import axios from 'axios';
 
 
 class Home extends Component {
@@ -11,16 +11,33 @@ class Home extends Component {
       audio: false,
     };
     this.recordingToggle = this.recordingToggle.bind(this);
+    this.onStop = this.onStop.bind(this);
   }
-
-
-  // onData(recordedBlob) {
-  //   console.log('chunk of real-time data is: ', recordedBlob);
-  // }
 
   onStop(recordedBlob) {
-    console.log('recordedBlob is: ', recordedBlob);
+    console.log('recordedBlob is: ', String(recordedBlob.blobURL));
+    this.postRecording(recordedBlob);
   }
+
+  postRecording(recording) {
+    const formData = new FormData();
+    formData.append('Blob', recording.blob);
+
+    axios({
+      url: 'http://localhost:5000/music',
+      method: 'POST',
+      data: formData,
+      headers: {
+        enctype: 'multipart/form-data',
+      },
+    }).then((response) => {
+      console.log(response);
+    })
+      .catch((error) => {
+        console.log(error);
+      });
+  }
+
 
   recordingToggle() {
     this.setState(prevState => ({
@@ -58,6 +75,7 @@ class Home extends Component {
   }
 }
 
+
 // react-redux glue -- outputs Container that knows how to call actions
 // new way to connect with react router 4
-export default withRouter(connect()(Home));
+export default Home;
