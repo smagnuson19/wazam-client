@@ -10,7 +10,7 @@ class Home extends Component {
     this.state = {
       audio: false,
       results: false,
-      hasMatch: true,
+      recordingData: '',
     };
     this.recordingToggle = this.recordingToggle.bind(this);
     this.redoToggle = this.redoToggle.bind(this);
@@ -37,6 +37,7 @@ class Home extends Component {
         enctype: 'multipart/form-data',
       },
     }).then((response) => {
+      this.setState({ recordingData: response });
       console.log(response);
     })
       .catch((error) => {
@@ -58,23 +59,27 @@ class Home extends Component {
   }
 
   displaySongs() {
-    if (this.state.hasMatch === true) {
+    console.log(this.state.recordingData);
+    if (this.state.recordingData === '') {
       return (
         <div className="songBox">
           <div className="headerBox">
             <p>
               {' '}
-              {'Your top song match results are:'}
+              {'Wazaming.....'}
             </p>
           </div>
-          <p>
-            {' '}
-            {'1. '}
-            {' '}
-            {'2. '}
-            {' '}
-            {'3. '}
-          </p>
+        </div>
+      );
+    } else if (this.state.recordingData.data === 'No tracks matched, please try again.') {
+      return (
+        <div className="songBox">
+          <div className="headerBox">
+            <p>
+              {' '}
+              {'No tracks matched, please try again.'}
+            </p>
+          </div>
           <div className="redoBox"
             onClick={this.redoToggle}
             role="button"
@@ -93,9 +98,28 @@ class Home extends Component {
           <div className="headerBox">
             <p>
               {' '}
-              {'No close matches. Please try again.'}
+              {'Your top song match results are:'}
             </p>
           </div>
+          <p>
+            {' '}
+            {'1. '}
+            {this.state.recordingData.data[0].title}
+            {' by '}
+            {this.state.recordingData.data[0].artist}
+          </p>
+          <p>
+            {'2. '}
+            {this.state.recordingData.data[1].title}
+            {' by '}
+            {this.state.recordingData.data[1].artist}
+          </p>
+          <p>
+            {'3. '}
+            {this.state.recordingData.data[2].title}
+            {' by '}
+            {this.state.recordingData.data[2].artist}
+          </p>
           <div className="redoBox"
             onClick={this.redoToggle}
             role="button"
