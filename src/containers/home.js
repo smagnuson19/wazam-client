@@ -103,28 +103,25 @@ class Home extends Component {
             </p>
           </div>
           <div className="song">
+            <img src={this.state.recordingData.data[0].image} alt="Logo" width="75" height="75" />
             <p>
-              {' '}
-              {'1. '}
-              <img src={this.state.recordingData.data[0].image} alt="Logo" width="50" height="50" />
               <a href={this.state.recordingData.data[0].spotify}>{this.state.recordingData.data[0].title}</a>
               {' by '}
               {this.state.recordingData.data[0].artist}
             </p>
           </div>
           <div className="song">
+            <img src={this.state.recordingData.data[1].image} alt="Logo" width="75" height="75" />
             <p>
-              {'2. '}
-              <img src={this.state.recordingData.data[1].image} alt="Logo" width="50" height="50" />
               <a href={this.state.recordingData.data[1].spotify}>{this.state.recordingData.data[1].title}</a>
               {' by '}
               {this.state.recordingData.data[1].artist}
             </p>
           </div>
           <div className="song">
+            <img src={this.state.recordingData.data[2].image} alt="Logo" width="75" height="75" />
             <p>
-              {'3. '}
-              <img src={this.state.recordingData.data[2].image} alt="Logo" width="50" height="50" />
+
               <a href={this.state.recordingData.data[2].spotify}>{this.state.recordingData.data[2].title}</a>
               {' by '}
               {this.state.recordingData.data[2].artist}
